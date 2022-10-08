@@ -9,10 +9,6 @@ public:
     }
     
     bool enQueue(int value) {
-       // array is full
-        // if((front==0 && rear==size-1) || (rear == (front-1)%(size-1))){
-        //     return false;
-        // }
         if(isFull()){
             return false;
         }
@@ -32,7 +28,7 @@ public:
     }
     
     bool deQueue() {
-        if(front == -1){         //array is empty
+        if(isEmpty()){         //array is empty
             return false;
         }        
         else if(front == rear)       //array having single element
