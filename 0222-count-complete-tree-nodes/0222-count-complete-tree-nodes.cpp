@@ -10,8 +10,8 @@
  * };
  */
 class Solution {
-public:
-    void inorder(TreeNode* root, int &cnt){
+private:
+     void inorder(TreeNode* root, int &cnt){
         if(root == NULL){
             return;
         }        
@@ -19,7 +19,7 @@ public:
         cnt++;
         inorder(root->right, cnt);
     }
-    
+public:
     int countNodes(TreeNode* root) {
         int cnt=0;
         inorder(root, cnt);
