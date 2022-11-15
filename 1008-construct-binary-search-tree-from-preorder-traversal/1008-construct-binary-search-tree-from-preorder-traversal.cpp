@@ -13,7 +13,7 @@ class Solution {
 public:
     TreeNode* solve(vector<int> &preorder, int maxi, int &i){
         if(i==preorder.size() || preorder[i] > maxi){
-              return NULL;
+              return nullptr;
         }
         TreeNode* root = new TreeNode(preorder[i++]);
         root->left = solve(preorder, root->val, i);
