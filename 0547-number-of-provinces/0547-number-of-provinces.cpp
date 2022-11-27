@@ -3,7 +3,7 @@ private:
     void dfs(int node, vector<int> list[], vector<int> &vis){
         vis[node] = 1;
         for(auto it: list[node]){
-            if(vis[it] == 0) dfs(it, list, vis);
+            if(!vis[it]) dfs(it, list, vis);
         }
     }
 public:
