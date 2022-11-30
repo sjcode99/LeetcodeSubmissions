@@ -36,15 +36,15 @@ class Solution
         int tm = 0;
         
         while(!q.empty()){
-            int r = q.front().first.first;
-            int c = q.front().first.second;
+            int row = q.front().first.first;
+            int col = q.front().first.second;
             int t = q.front().second;
             tm = max(tm, t);
             q.pop();
             
             for(int i=0; i<4; i++){
-                int nrow = r + delrow[i];
-                int ncol = c + delcol[i];
+                int nrow = row + delrow[i];
+                int ncol = col + delcol[i];
                 
                 if(nrow >= 0 && nrow < n && ncol >= 0 && ncol < m &&
                     !vis[nrow][ncol] && grid[nrow][ncol] == 1){
