@@ -1,6 +1,6 @@
 class Solution {
 private: 
-    void dfs(int row, int col, vector<vector<int>> &vis, vector<vector<char>> board,
+    void dfs(int row, int col, vector<vector<int>> &vis, vector<vector<char>> &board,
             int delrow[], int delcol[]){
         vis[row][col] = 1;
         
