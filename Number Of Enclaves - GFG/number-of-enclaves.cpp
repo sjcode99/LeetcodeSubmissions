@@ -13,7 +13,7 @@ class Solution {
     int numberOfEnclaves(vector<vector<int>> &grid) {
         int n = grid.size();
         int m = grid[0].size();
-        vector<vector<int>> vis(n, vector<int>(m,0));
+        int vis[n][m] = {0};
         queue<pair<int,int>> q;
         
         for(int i=0; i<n; i++){
