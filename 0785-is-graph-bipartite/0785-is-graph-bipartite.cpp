@@ -26,7 +26,7 @@ public:
         
         for(int i=0; i<n; i++){
             if(color[i] == -1){
-                if(check(i, graph, color) == false) return false;
+                if(!check(i, graph, color)) return false;
             }
         }
         return true;
