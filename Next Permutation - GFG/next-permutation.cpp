@@ -11,22 +11,24 @@ class Solution{
 public:
     vector<int> nextPermutation(int N, vector<int> arr){
         int k, l;
-        if(N == 1) return arr;
+        vector<int> ans = arr;
+        
+        if(N == 1) return ans;
         
         for(k=N-2; k>=0; k--){
-            if(arr[k] < arr[k+1]) break;
+            if(ans[k] < ans[k+1]) break;
         }
         
         if(k<0){
-            reverse(arr.begin(), arr.end());
+            reverse(ans.begin(), ans.end());
         }else{
             for(l=N-1; l>k; l--){
-                if(arr[l] > arr[k]) break;
+                if(ans[l] > ans[k]) break;
             }
-            swap(arr[k], arr[l]);
-            reverse(arr.begin() + k + 1, arr.end());
+            swap(ans[k], ans[l]);
+            reverse(ans.begin() + k + 1, ans.end());
         }
-        return arr;
+        return ans;
     }
 };
 
