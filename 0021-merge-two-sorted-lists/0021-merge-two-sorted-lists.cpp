@@ -17,9 +17,9 @@ public:
         if(l1->val > l2->val) swap(l1, l2);
         ListNode* res = l1;
         
-        while(l1 != nullptr && l2 != nullptr){
+        while(l1 && l2){
             ListNode* curr = nullptr;
-            while(l1 != nullptr && l1->val <= l2->val){
+            while(l1 && l1->val <= l2->val){
                 curr = l1;
                 l1 = l1->next;
             }
