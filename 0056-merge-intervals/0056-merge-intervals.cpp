@@ -6,6 +6,7 @@ public:
         
         sort(intervals.begin(), intervals.end());
         vector<int> temp = intervals[0];
+        
         for(auto it: intervals){
             if(it[0] <= temp[1]){
                 temp[1] = max(it[1], temp[1]);
