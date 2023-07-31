@@ -1,22 +1,19 @@
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
-//         with O(N) && O(1)
         int n = nums.size();
-        vector<int> rightPro(n);
+        vector<int> right(n);
         
-        rightPro[n-1] = 1;
+        right[n-1] = 1;
         for(int i=n-2; i>=0; i--){
-            rightPro[i] = rightPro[i+1]*nums[i+1];
+           right[i] = right[i+1] * nums[i+1];
         }
         
-        int leftPro=1;
+        int left = 1;
         for(int i=0; i<n; i++){
-            rightPro[i] = rightPro[i] * leftPro;
-            leftPro = leftPro * nums[i];
+           right[i] = left * right[i];
+            left = left * nums[i];
         }
-        
-        return rightPro;
-         
+        return right;
     }
 };
