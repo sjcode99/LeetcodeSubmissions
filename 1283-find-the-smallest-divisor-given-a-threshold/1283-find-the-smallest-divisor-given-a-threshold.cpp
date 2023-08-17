@@ -2,8 +2,8 @@ class Solution {
 private:
     int calculateSum(vector<int>& nums, int divisor){
         int sum = 0;
-        for(int i=0; i<nums.size(); i++){
-            sum += ceil(nums[i] * 1.0/divisor * 1.0);
+        for(auto it: nums){
+            sum += ceil(it * 1.0/divisor * 1.0);
         }
         return sum;
     }
