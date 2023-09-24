@@ -1,32 +1,33 @@
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        int len = nums.size();
+        int n = nums.size();
         sort(nums.begin(), nums.end());
-        vector<vector<int>> ans;
+        vector<vector<int> > res;
         
-        for(int i=0; i<len-2; i++){
-            if(i==0 || (i>0 && nums[i] != nums[i-1])){
-                int l=i+1, h=len-1, sum= 0-nums[i];
-            
-                while(l<h){
-                    if(nums[l] + nums[h] == sum){
+        for(int i=0; i<n-1; i++){
+            if(i == 0 || (i<n && nums[i] != nums[i-1])){
+                int lt=i+1, rt=n-1, sum = 0-nums[i];
+                
+                while(lt < rt){
+                    if(nums[lt] + nums[rt] == sum){
                         vector<int> temp;
-                        temp.push_back(nums[l]);
-                        temp.push_back(nums[h]);
+                        temp.push_back(nums[lt]);
+                        temp.push_back(nums[rt]);
                         temp.push_back(nums[i]);
-                        ans.push_back(temp);
-
-                        while(l<h && nums[l] == nums[l+1])l++;
-                        while(l<h && nums[h] == nums[h-1])h--;
-                        l++;
-                        h--;
+                        res.push_back(temp);
+                        
+                        while(lt < rt && nums[lt] == nums[lt+1]) lt++;
+                        while(lt < rt && nums[rt] == nums[rt-1]) rt--;
+                        
+                        lt++;
+                        rt--;
                     }
-                    else if(nums[l] + nums[h] < sum) l++;
-                    else h--;
+                    else if(nums[lt] + nums[rt] < sum) lt++;
+                    else rt--;
                 }
             }
         }
-        return ans;
+        return res;
     }
 };
