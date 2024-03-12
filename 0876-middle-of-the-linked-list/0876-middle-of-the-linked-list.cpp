@@ -16,9 +16,7 @@ public:
         
         while(fst != nullptr && fst->next != nullptr){
             sl = sl->next;
-            if(fst->next != nullptr){
-                fst = fst->next->next;
-            }
+            fst = fst->next->next;
         }
         return sl;
     }
