@@ -7,6 +7,7 @@ public:
         // {{r, c}, t}
         queue<pair<pair<int, int>, int>> q;
         int vis[m][n];
+        int cntFresh = 0;
         
         for(int i=0; i<m; i++){
             for(int j=0; j<n; j++){
@@ -16,6 +17,8 @@ public:
                 }else{
                     vis[i][j] = 0;
                 }
+                
+                if(grid[i][j] == 1) cntFresh++;
             }
         }
         
@@ -39,15 +42,12 @@ public:
                    grid[nrow][ncol] == 1 && vis[nrow][ncol] != 2){
                     vis[nrow][ncol] = 2;
                     q.push({{nrow, ncol}, t+1});
+                    cntFresh--;
                 }
             }
         }
         
-        for(int i=0; i<m; i++){
-            for(int j=0; j<n; j++){
-                if(grid[i][j] == 1 && vis[i][j] != 2) return -1;
-            }
-        }
+        if(cntFresh) return -1;
         return tm;
     }
 };
