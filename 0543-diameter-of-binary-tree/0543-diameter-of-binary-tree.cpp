@@ -10,28 +10,26 @@
  * };
  */
 class Solution {
-public:
-    pair<int,int> diameterOfBinaryTreeFast(TreeNode* root){
-        if(root == NULL){
-            pair<int,int> p = make_pair(0,0);
-            return p;
-        }
+private:
+    pair<int, int> calcDiam(TreeNode* root){
+        //{diameter, height}
+        if(root == NULL) return {0,0};
         
-        pair<int,int> left = diameterOfBinaryTreeFast(root->left);
-        pair<int,int> right = diameterOfBinaryTreeFast(root->right);
+        pair<int, int> left = calcDiam(root->left);
+        pair<int, int> right = calcDiam(root->right);
         
-        int op1 = left.first;
-        int op2 = right.first;
-        int op3 = left.second + right.second;
+        int leftDiam = left.first;
+        int rightDiam = right.first;
+        int height = left.second + right.second;
         
         pair<int, int> ans;
-        ans.first = max(op1, max(op2, op3));
+        ans.first = max(leftDiam, max(rightDiam, height));
         ans.second = max(left.second, right.second) + 1;
         
-        return ans;        
+        return ans;
     }
-    
-    int diameterOfBinaryTree(TreeNode* root) {
-        return diameterOfBinaryTreeFast(root).first;
+public:
+    int diameterOfBinaryTree(TreeNode* root) {      
+        return calcDiam(root).first;
     }
 };
