@@ -11,21 +11,21 @@
  */
 class Solution {
 private:
-void nodeMapping(vector<int> in, int n, map<int, int> &mp){
+void nodeMapping(vector<int> &in, int n, map<int, int> &mp){
     for(int i=0; i<n; i++){
         mp[in[i]] = i;
     }
 }
     
-TreeNode* solve(vector<int> in, vector<int> post, map<int, int> &mp, int &index, int sIdx, int eIdx, int n){
+TreeNode* solve(vector<int> &post, map<int, int> &mp, int &index, int sIdx, int eIdx, int n){
     if(index < 0 || sIdx > eIdx) return NULL;
 
     int ele = post[index--];
     TreeNode* root = new TreeNode(ele);
     int pos = mp[ele];
 
-    root->right = solve(in, post, mp, index, pos+1, eIdx, n);
-    root->left = solve(in, post, mp, index, sIdx, pos-1, n);
+    root->right = solve(post, mp, index, pos+1, eIdx, n);
+    root->left = solve(post, mp, index, sIdx, pos-1, n);
 
     return root;
 }
@@ -37,7 +37,7 @@ public:
         
         nodeMapping(in, n, mp);
         
-        TreeNode* ans = solve(in, post, mp, index, 0, n-1, n);
+        TreeNode* ans = solve(post, mp, index, 0, n-1, n);
         return ans;
     }
 };
