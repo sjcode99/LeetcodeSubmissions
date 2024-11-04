@@ -1,30 +1,26 @@
 class Solution {
 private:
-    void helper(vector<int>& nums, int freq[], vector<vector<int>>& ans, vector<int>& arr, int n){
-        if(arr.size() == nums.size()){
-            ans.push_back(arr);
+    void solve(vector<int> nums, vector<vector<int>>& ans, int n, int index){
+        //base case
+        if(index >= n){
+            ans.push_back(nums);
             return;
         }
         
-        for(int i=0; i<n; i++){
-            if(!freq[i]){
-                arr.push_back(nums[i]);
-                freq[i] = 1;
-                helper(nums, freq, ans, arr, n);
-                freq[i] = 0;
-                arr.pop_back();
-            }
+        for(int i=index; i<n; i++){
+            swap(nums[i], nums[index]);
+            solve(nums, ans, n, index+1);
+            
+            swap(nums[i], nums[index]);
         }
     }
 public:
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> ans;
-        vector<int> temp;
         int n = nums.size();
-        int freq[n];
-        for(int i=0; i<n; i++) freq[i] = 0;
-        helper(nums, freq, ans, temp, n);
+        int index = 0;
         
+        solve(nums, ans, n, index);
         return ans;
     }
 };
