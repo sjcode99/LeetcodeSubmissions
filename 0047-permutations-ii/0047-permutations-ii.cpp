@@ -1,6 +1,6 @@
 class Solution {
 private:
-    void solve(vector<int>& nums, vector<vector<int>>& ans, int n, int index){
+    void solve(vector<int> nums, vector<vector<int>>& ans, int n, int index){
         //base case
         if(index >= n){
             ans.push_back(nums);
