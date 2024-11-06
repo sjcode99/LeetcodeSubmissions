@@ -23,8 +23,6 @@ public:
         helper(st, s, a);
         helper(st, t, b);
         
-        cout<< a << endl << b;
-        
         if(a == b) return true;
         return false;
     }
