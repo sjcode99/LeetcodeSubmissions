@@ -1,24 +1,24 @@
 class MyStack {
 public:
     queue<int> q;
-    int topel;
-    
+    int el;
     MyStack() {
         
     }
     
     void push(int x) {
         q.push(x);
-        topel = x;
+        el = x;
     }
-     
+    
     int pop() {
-        if(empty()) return 0;
-        int size = q.size();
-        while(size > 1){
+        if(q.empty()) return 0;
+        
+        int n = q.size();
+        while(n>1){
             this->push(q.front());
             q.pop();
-            size--;
+            n--;
         }
         int val = q.front();
         q.pop();
@@ -26,7 +26,7 @@ public:
     }
     
     int top() {
-        return topel;
+        return el;
     }
     
     bool empty() {
